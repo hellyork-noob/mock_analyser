@@ -1,0 +1,47 @@
+/* Ten equal ten-day bands. Color is independent of the chosen UI accent. */
+.app .v21-countdown [data-countdown-band="10"] { --countdown-tint: #879ab8; }
+.app .v21-countdown [data-countdown-band="9"] { --countdown-tint: #79a0e0; }
+.app .v21-countdown [data-countdown-band="8"] { --countdown-tint: #68b6d4; }
+.app .v21-countdown [data-countdown-band="7"] { --countdown-tint: #65bcb3; }
+.app .v21-countdown [data-countdown-band="6"] { --countdown-tint: #b9aa7d; }
+.app .v21-countdown [data-countdown-band="5"] { --countdown-tint: #d3b76c; }
+.app .v21-countdown [data-countdown-band="4"] { --countdown-tint: #e9b35e; }
+.app .v21-countdown [data-countdown-band="3"] { --countdown-tint: #f1a064; }
+.app .v21-countdown [data-countdown-band="2"] { --countdown-tint: #f18c70; }
+.app .v21-countdown [data-countdown-band="1"] { --countdown-tint: #f18089; }
+.app .v21-countdown [data-countdown-band="today"] { --countdown-tint: #ff7886; }
+.app .v21-countdown :is([data-countdown-band="far"], [data-countdown-band="pending"]) { --countdown-tint: #95a1b5; }
+.app .v21-countdown [data-countdown-band="past"] { --countdown-tint: #959ba7; }
+.app.light .v21-countdown [data-countdown-band="10"] { --countdown-tint: #536984; }
+.app.light .v21-countdown [data-countdown-band="9"] { --countdown-tint: #3567ac; }
+.app.light .v21-countdown [data-countdown-band="8"] { --countdown-tint: #226b85; }
+.app.light .v21-countdown [data-countdown-band="7"] { --countdown-tint: #206f67; }
+.app.light .v21-countdown [data-countdown-band="6"] { --countdown-tint: #76643b; }
+.app.light .v21-countdown [data-countdown-band="5"] { --countdown-tint: #806020; }
+.app.light .v21-countdown [data-countdown-band="4"] { --countdown-tint: #8a5b16; }
+.app.light .v21-countdown [data-countdown-band="3"] { --countdown-tint: #995018; }
+.app.light .v21-countdown [data-countdown-band="2"] { --countdown-tint: #aa422b; }
+.app.light .v21-countdown [data-countdown-band="1"] { --countdown-tint: #b53a47; }
+.app.light .v21-countdown [data-countdown-band="today"] { --countdown-tint: #bf293d; }
+.app.light .v21-countdown :is([data-countdown-band="far"], [data-countdown-band="pending"]) { --countdown-tint: #5c6b80; }
+.app.light .v21-countdown [data-countdown-band="past"] { --countdown-tint: #656b76; }
+.app .v21-countdown [data-countdown-band] {
+  color: var(--text);
+  border-left-color: var(--countdown-tint);
+  /* Stronger color at the left, fading gradually across the full card. */
+  background: linear-gradient(100deg,
+    color-mix(in srgb, var(--countdown-tint) 30%, var(--surface)) 0%,
+    color-mix(in srgb, var(--countdown-tint) 22%, var(--surface)) 35%,
+    color-mix(in srgb, var(--countdown-tint) 11%, var(--surface)) 72%,
+    color-mix(in srgb, var(--countdown-tint) 3%, var(--surface)) 100%) !important;
+}
+.app .v21-countdown [data-countdown-band] :is(.v21-countdown-days strong, .v21-countdown-card-status > strong, .v21-countdown-alert) { color: var(--countdown-tint); }
+.app .v21-countdown [data-countdown-band] h2 { color: var(--text); }
+.app .v21-countdown [data-countdown-band="today"] {
+  background: linear-gradient(100deg,
+    color-mix(in srgb, var(--countdown-tint) 35%, var(--surface)) 0%,
+    color-mix(in srgb, var(--countdown-tint) 25%, var(--surface)) 35%,
+    color-mix(in srgb, var(--countdown-tint) 13%, var(--surface)) 72%,
+    color-mix(in srgb, var(--countdown-tint) 4%, var(--surface)) 100%) !important;
+}
+.app .v21-countdown [data-countdown-band="past"] .v21-countdown-past-pill { color: var(--countdown-tint); background: var(--surface2); }

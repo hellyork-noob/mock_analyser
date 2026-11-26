@@ -1,0 +1,472 @@
+/* v2.2 — screenshot-inspired subject and consistency analytics */
+.v22-new-analytics {
+  display: grid;
+  gap: 24px;
+  margin: 20px 0 24px;
+}
+.v22-panel {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+}
+.v22-panel-heading,
+.v22-trends-heading,
+.v22-subject-heading,
+.v22-subject-foot,
+.v22-chart-title,
+.v22-consistency-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.v22-panel-heading {
+  margin-bottom: 22px;
+}
+.v22-panel-heading h3,
+.v22-trends-heading h3 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  color: var(--text);
+}
+.v22-panel-heading p,
+.v22-chart-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.v22-count,
+.v22-chart-title span {
+  background: var(--border);
+  color: var(--text);
+  border-radius: 18px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.v22-subject-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 1vw, 16px);
+  width: 100%;
+  min-width: 0;
+}
+.v22-subject-card,
+.v22-chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  padding: 20px;
+  min-width: 0;
+}
+.v22-subject-card {
+  padding: clamp(10px, 1.2vw, 20px);
+  overflow: hidden;
+}
+.v22-subject-heading strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+.v22-subject-heading span {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 5px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.v22-strong {
+  color: #10b981;
+  background: #10b98118;
+}
+.v22-average {
+  color: #f59e0b;
+  background: #f59e0b18;
+}
+.v22-weak {
+  color: #ec4899;
+  background: #ec489918;
+}
+.v22-ring {
+  width: min(170px, 100%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin: 30px auto 20px;
+  padding: 19px;
+  display: grid;
+  place-items: center;
+}
+.v22-ring-center {
+  background: var(--surface);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.v22-ring-center b {
+  font-size: 27px;
+  line-height: 1.2;
+}
+.v22-ring-center small {
+  font-size: 11px;
+  color: var(--muted);
+}
+.v22-subject-foot {
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+}
+.v22-subject-foot b {
+  color: var(--text);
+}
+.v22-trends-heading {
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.v22-trends-heading label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.v22-trends-heading select {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px;
+  max-width: 240px;
+}
+.v22-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.v22-chart-card {
+  padding: 22px 18px 15px;
+}
+.v22-chart-card h4 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: var(--text);
+}
+.v22-chart-card p {
+  min-height: 38px;
+  margin-bottom: 15px;
+}
+.v22-consistency-foot {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.v22-consistency-foot b {
+  color: var(--text);
+}
+.v22-empty {
+  height: 230px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+.v22-method-note {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+/* Scrolling stays on the GPU-composited modal; avoid costly full-screen blur. */
+.aa-md-overlay {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.aa-md-modal {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: auto;
+}
+.aa-md-arc {
+  will-change: auto;
+}
+@media (max-width: 1100px) {
+  .v22-chart-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 620px) {
+  .v22-panel {
+    padding: 14px;
+  }
+  .v22-subject-grid {
+    gap: 9px;
+  }
+
+  .v22-ring {
+    padding: 12px;
+    margin: 18px auto 12px;
+  }
+  .v22-ring-center b {
+    font-size: 20px;
+  }
+  .v22-subject-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+  .v22-trends-heading label {
+    flex-wrap: wrap;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v22-new-analytics * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* v2.2 sectional average breakdown */
+.v22-breakdown-panel {
+  margin-top: 2px;
+}
+.v22-breakdown-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.v22-breakdown-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 13px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.v22-breakdown-table th,
+.v22-breakdown-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  text-align: center;
+  white-space: nowrap;
+}
+.v22-breakdown-table th:last-child,
+.v22-breakdown-table td:last-child {
+  border-right: 0;
+}
+.v22-breakdown-table thead tr:first-child {
+  background: color-mix(in srgb, var(--surface) 75%, #3765a5 25%);
+}
+.v22-breakdown-table thead tr:first-child th:not(:first-child) {
+  color: #4a9cff;
+  font-size: 15px;
+}
+.v22-breakdown-table thead tr:nth-child(2) {
+  background: color-mix(in srgb, var(--surface) 90%, #243b61 10%);
+  color: var(--muted);
+}
+.v22-breakdown-table th:first-child {
+  text-align: left;
+  padding-left: 16px;
+  min-width: 220px;
+}
+.v22-breakdown-table tbody th {
+  font-weight: 700;
+}
+.v22-breakdown-table tbody td {
+  color: var(--muted);
+}
+.v22-breakdown-table .v22-breakdown-marks {
+  color: var(--text);
+  font-weight: 750;
+}
+.v22-breakdown-table .v22-breakdown-total {
+  background: color-mix(in srgb, var(--surface) 85%, #4c6b9b 15%);
+  font-weight: 800;
+}
+.v22-breakdown-table .v22-breakdown-total td {
+  color: var(--text);
+}
+.v22-breakdown-table .v22-breakdown-total td:nth-child(3n) {
+  color: #10b981;
+}
+.v22-breakdown-table .v22-breakdown-total .v22-breakdown-marks {
+  color: #4a9cff;
+}
+.v22-breakdown-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+/* ==============================================
+   V2.2 — SECTIONAL BREAKDOWN PREMIUM POLISH
+   ============================================== */
+
+/* Proper separation from the three charts above */
+.v22-breakdown-panel {
+  margin-top: 32px !important;
+  padding: 28px 30px !important;
+  border-radius: 22px;
+}
+
+/* Clear heading separation */
+.v22-breakdown-panel .v22-panel-heading {
+  margin-bottom: 26px !important;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.v22-breakdown-panel .v22-panel-heading h3 {
+  font-size: 18px;
+  font-weight: 550;
+  letter-spacing: -0.4px;
+  margin: 0 0 7px;
+}
+
+.v22-breakdown-panel .v22-panel-heading p {
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Scroll only on narrow screens */
+.v22-breakdown-scroll {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+/* Consistent column sizing */
+.v22-breakdown-table {
+  width: 100%;
+  min-width: 1060px;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Wider subject column */
+.v22-breakdown-table th:first-child {
+  width: 20%;
+}
+
+.v22-breakdown-table thead tr:first-child th:not(:first-child) {
+  background: rgba(59, 130, 246, 0.09);
+  color: #60a5fa;
+  font-size: 15px;
+  font-weight: 750;
+  padding: 17px 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Subheadings: Attempt / Accuracy / Marks */
+.v22-breakdown-table thead tr:nth-child(2) th {
+  padding: 13px 8px;
+  background: rgba(15, 23, 42, 0.08);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Subject heading */
+.v22-breakdown-table thead tr:first-child th:first-child {
+  background: rgba(59, 130, 246, 0.07);
+  font-size: 13px;
+  font-weight: 750;
+  text-align: left;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Body spacing */
+.v22-breakdown-table tbody th,
+.v22-breakdown-table tbody td {
+  padding: 17px 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.v22-breakdown-table tbody th {
+  padding-left: 18px;
+  text-align: left;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+/* Subject-specific colors */
+.v22-breakdown-table tbody tr:nth-child(4n + 1):not(.v22-breakdown-total) th {
+  color: #38bdf8; /* Maths */
+}
+
+.v22-breakdown-table tbody tr:nth-child(4n + 2):not(.v22-breakdown-total) th {
+  color: #a78bfa; /* Reasoning */
+}
+
+.v22-breakdown-table tbody tr:nth-child(4n + 3):not(.v22-breakdown-total) th {
+  color: #34d399; /* English */
+}
+
+.v22-breakdown-table tbody tr:nth-child(4n + 4):not(.v22-breakdown-total) th {
+  color: #fbbf24; /* GS */
+}
+
+/* Marks emphasis */
+.v22-breakdown-table .v22-breakdown-marks {
+  font-weight: 800;
+  color: var(--text);
+}
+
+/* Vertical separators between average groups */
+.v22-breakdown-table thead tr:first-child th:nth-child(n + 3),
+.v22-breakdown-table thead tr:nth-child(2) th:nth-child(3n + 1),
+.v22-breakdown-table tbody td:nth-child(3n + 2) {
+  border-left: 2px solid rgba(96, 165, 250, 0.2);
+}
+
+/* Row hover */
+.v22-breakdown-table tbody tr:not(.v22-breakdown-total):hover {
+  background: rgba(59, 130, 246, 0.055);
+}
+
+/* TOTAL row */
+.v22-breakdown-table tbody tr.v22-breakdown-total {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.v22-breakdown-table tbody tr.v22-breakdown-total th {
+  color: #60a5fa;
+  font-weight: 800;
+}
+
+.v22-breakdown-table tbody tr.v22-breakdown-total td {
+  font-weight: 800;
+}
+
+.v22-breakdown-table tbody tr.v22-breakdown-total td:nth-child(3n + 2) {
+  color: #34d399;
+}
+
+/* Responsive spacing */
+@media (max-width: 768px) {
+  .v22-breakdown-panel {
+    margin-top: 24px !important;
+    padding: 18px 14px !important;
+  }
+
+  .v22-breakdown-panel .v22-panel-heading {
+    margin-bottom: 18px !important;
+    padding-bottom: 14px;
+  }
+}
+

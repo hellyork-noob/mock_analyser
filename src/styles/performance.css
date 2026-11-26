@@ -1,0 +1,52 @@
+/* Scrolling content has no backdrop blur or filter-backed chart layers.
+   The translucent fills, ambient background and highlights provide the glass. */
+.app .aa-md-arc {
+  filter: none;
+}
+
+.app .panel,
+.app .metric,
+.app .welcome,
+.app .v22-panel,
+.app .aa-pl-card {
+  --glass-shadow: 0 5px 14px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.14);
+}
+
+.app.light .panel,
+.app.light .metric,
+.app.light .welcome,
+.app.light .v22-panel,
+.app.light .aa-pl-card {
+  --glass-shadow: 0 5px 14px rgba(54, 71, 40, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.history-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 16px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.history-pagination > span:first-child {
+  margin-right: auto;
+}
+
+/* Plot containers already have explicit heights from ResponsiveContainer.
+   Skip their offscreen contents without changing the page's scroll height. */
+.analytics-single-page .recharts-responsive-container {
+  content-visibility: auto;
+}
+
+/* Keep the glass fill and highlights while reducing the area each card repaints. */
+.app[data-glass-performance="true"] main {
+  --glass-elevation: 0 5px 12px rgb(0 0 0 / calc(.34 * var(--glass-shadow-depth))),
+    inset 0 1px 0 rgb(255 255 255 / calc(.8 * var(--glass-border)));
+}
+
+.app[data-glass-performance="true"] .glass-preview-sidebar {
+  backdrop-filter: none;
+}

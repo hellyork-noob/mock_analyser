@@ -1,0 +1,251 @@
+/* Phase 9A — non-destructive responsive and interaction polish */
+.app {
+  min-width: 0;
+}
+.app main,
+.app .content,
+.app .panel,
+.app .metric {
+  min-width: 0;
+}
+.app .content {
+  width: 100%;
+}
+.app button,
+.app a,
+.app input,
+.app select {
+  -webkit-tap-highlight-color: transparent;
+}
+.app button:focus-visible,
+.app a:focus-visible,
+.app input:focus-visible,
+.app select:focus-visible,
+.app textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.app button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.app .primary,
+.app .secondary,
+.app .ghost,
+.app .iconbtn,
+.app .sidebar nav button {
+  transition:
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .app .primary:hover:not(:disabled),
+  .app .secondary:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+  .app .panel {
+    transition: border-color 0.18s ease;
+  }
+}
+.app .toolbar {
+  min-width: 0;
+}
+.app .analyticsbar {
+  gap: 12px;
+}
+.app .analyticsbar h2 {
+  line-height: 1.25;
+}
+.app .p3-analytics {
+  gap: 13px;
+}
+.app .p3-analytics .panels {
+  gap: 12px;
+}
+.app .p3-analytics .panelhead {
+  margin-bottom: 12px;
+}
+.app .p3-analytics .p3-gauges {
+  padding-block: 14px;
+}
+.app .p3-analytics .p3-gauge {
+  padding: 5px;
+}
+.app .p8-summary-card {
+  padding: 13px 15px;
+}
+.app .p8-overview,
+.app .p8-lower-grid {
+  gap: 10px;
+}
+.app .p8-recent-row {
+  padding-block: 7px;
+}
+.app .tablewrap,
+.app .p5e-scroll,
+.app .p4e-section-table {
+  max-width: 100%;
+}
+.app .tablewrap {
+  scrollbar-width: thin;
+}
+.app .formgrid,
+.app .compactform {
+  min-width: 0;
+}
+.app input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+.app progress {
+  accent-color: var(--accent);
+}
+@media (max-width: 1200px) {
+  .app .content {
+    padding-inline: 22px;
+  }
+  .app header {
+    padding-inline: 22px;
+  }
+  .app .panels {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .app .p8-lower-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 800px) {
+  .app .content {
+    padding: 16px;
+  }
+  .app header {
+    padding: 14px 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .app .headright {
+    flex-wrap: wrap;
+  }
+  .app .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .app .p8-overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .app .p3-selects {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .app .p3-gauge-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .app .p3-dial {
+    width: 92px;
+    height: 92px;
+  }
+  .app .p3-dial-core {
+    width: 72px;
+    height: 72px;
+  }
+  .app .p3-dial-core strong {
+    font-size: 16px;
+  }
+}
+@media (max-width: 650px) {
+  .app .content {
+    padding: 12px;
+  }
+  .app header {
+    padding: 12px;
+  }
+  .app .panel {
+    padding: 13px;
+  }
+  .app .metric {
+    padding: 12px;
+  }
+  .app .stats {
+    gap: 8px;
+  }
+  .app .metricvalue {
+    font-size: 23px;
+  }
+  .app .p8-overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .app .p8-summary-card {
+    padding: 12px;
+  }
+  .app .p8-summary-card > strong {
+    font-size: 21px;
+  }
+  .app .p8-summary-card > small {
+    white-space: normal;
+  }
+  .app .analyticsbar {
+    align-items: stretch;
+  }
+  .app .analyticsbar .toolbar {
+    width: 100%;
+  }
+  .app .analyticsbar .toolbar > .segmented {
+    flex: 1 1 auto;
+  }
+  .app .analyticsbar .toolbar > .segmented button {
+    flex: 1;
+  }
+  .app .p3-gauge-grid {
+    gap: 3px;
+  }
+  .app .p3-gauge > strong {
+    font-size: 11px;
+  }
+  .app .p3-gauge > small {
+    font-size: 10px;
+  }
+  .app .p3-dial {
+    width: 76px;
+    height: 76px;
+  }
+  .app .p3-dial-core {
+    width: 59px;
+    height: 59px;
+  }
+  .app .p3-dial-core strong {
+    font-size: 13px;
+  }
+  .app .p8-recent-row {
+    gap: 8px;
+  }
+}
+@media (max-width: 390px) {
+  .app .p8-overview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .app .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .app .p3-dial {
+    width: 66px;
+    height: 66px;
+  }
+  .app .p3-dial-core {
+    width: 51px;
+    height: 51px;
+  }
+  .app .p3-dial-core strong {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app *,
+  .app *::before,
+  .app *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

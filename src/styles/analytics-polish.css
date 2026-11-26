@@ -1,0 +1,144 @@
+/* v2.1 Analytics UI polish — additive, retains countdown gradient styling */
+.app .p3-analytics .analyticsbar {
+  align-items: center;
+  padding: 4px 0 3px;
+}
+.app .p3-analytics .analyticsbar h2 {
+  font-size: clamp(21px, 2vw, 26px);
+  letter-spacing: -0.65px;
+  font-weight: 800;
+}
+.app .p3-analytics .analyticsbar .eyebrow {
+  letter-spacing: 0.095em;
+  font-weight: 700;
+}
+.app .p3-analytics .analyticsbar .toolbar {
+  gap: 8px;
+}
+.app .p3-analytics .analyticsbar .toolbar :is(select, button) {
+  min-height: 36px;
+}
+.app .p3-analytics .stats {
+  gap: 12px;
+  margin-top: 0;
+}
+.app .p3-analytics .stats .metric {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-width: 0;
+  padding: 16px 17px 15px;
+  border-radius: 15px;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.app .p3-analytics .stats .metric::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+  background: var(--aa-metric-color);
+}
+.app .p3-analytics .stats .metric::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, var(--aa-metric-wash), transparent 65%);
+}
+.app .p3-analytics .stats .metric:nth-child(1) {
+  --aa-metric-color: #8b72ff;
+  --aa-metric-wash: rgba(139, 114, 255, 0.11);
+}
+.app .p3-analytics .stats .metric:nth-child(2) {
+  --aa-metric-color: #34d399;
+  --aa-metric-wash: rgba(52, 211, 153, 0.11);
+}
+.app .p3-analytics .stats .metric:nth-child(3) {
+  --aa-metric-color: #38bdf8;
+  --aa-metric-wash: rgba(56, 189, 248, 0.11);
+}
+.app .p3-analytics .stats .metric:nth-child(4) {
+  --aa-metric-color: #fbbf24;
+  --aa-metric-wash: rgba(251, 191, 36, 0.11);
+}
+.app .p3-analytics .stats .metric .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.065em;
+  font-weight: 700;
+}
+.app .p3-analytics .stats .metricvalue {
+  margin: 10px 0 5px;
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.85px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.app .p3-analytics .stats .metricvalue span {
+  font-size: 0.57em;
+  font-weight: 650;
+  letter-spacing: -0.2px;
+  color: var(--muted);
+}
+.app .p3-analytics .stats .metric small {
+  line-height: 1.4;
+}
+.app .p3-analytics .panel {
+  border-radius: 15px;
+}
+.app .p3-analytics .panelhead h3 {
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 750;
+  letter-spacing: -0.25px;
+}
+.app .p3-analytics .panelhead p {
+  margin-top: 4px;
+  line-height: 1.45;
+}
+.app .p3-analytics .p3-gauge-grid {
+  gap: 10px;
+}
+.app .p3-analytics .p3-gauge {
+  min-width: 0;
+  padding: 9px 5px;
+}
+.app .p3-analytics .p4c-metrics > div {
+  border-radius: 11px;
+}
+.app .p3-analytics .tablewrap {
+  border-radius: 10px;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .app .p3-analytics .stats .metric:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+  }
+}
+@media (max-width: 900px) {
+  .app .p3-analytics .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 520px) {
+  .app .p3-analytics .stats {
+    gap: 8px;
+  }
+  .app .p3-analytics .stats .metric {
+    padding: 12px;
+  }
+  .app .p3-analytics .stats .metricvalue {
+    font-size: 23px;
+    white-space: normal;
+  }
+  .app .p3-analytics .analyticsbar .toolbar {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,85 @@
+/* Portaled to .app so glass cards cannot change fixed overlay coordinates. */
+.modal-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+}
+
+.app .aa-md-overlay,
+.app .p4-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  place-items: center;
+  padding: clamp(10px, 2vw, 24px);
+  background: rgba(8, 11, 8, 0.76);
+  overflow: hidden;
+}
+
+.app .aa-md-modal,
+.app .p4-dialog {
+  max-height: calc(100dvh - clamp(20px, 4vw, 48px));
+  min-height: 0;
+  min-width: 0;
+  margin: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: var(--solid-surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+}
+
+.app .aa-md-modal {
+  width: min(1100px, 100%);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app .aa-md-header {
+  flex-shrink: 0;
+  padding-top: 12px;
+  background: transparent;
+}
+
+.aa-md-report-body {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding-inline-end: 4px;
+}
+
+.app .aa-md-header h2 {
+  overflow-wrap: anywhere;
+}
+
+.app .aa-md-close {
+  flex: 0 0 auto;
+}
+
+.app .aa-md-modal .aa-md-arc { position: relative; }
+
+.aa-md-arc-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  mask: radial-gradient(circle closest-side, transparent 74%, black 75%);
+  pointer-events: none;
+}
+
+.app .aa-md-modal .aa-md-arc-center {
+  background: transparent;
+}
+
+@media (max-width: 620px) {
+  .app .aa-md-modal {
+    padding: 16px;
+  }
+}

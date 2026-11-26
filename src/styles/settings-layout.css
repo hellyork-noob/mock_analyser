@@ -1,0 +1,69 @@
+/* Header-free rail: overview and daily planning, mock workflow, then tools. */
+.app aside.sidebar { padding: 16px 11px; gap: 14px; }
+.app .sidebar nav { gap: 3px; scrollbar-width: thin; }
+.app .sidebar nav button { padding: 10px 13px; min-height: 38px; }
+.app .sidebar nav button[data-group-start="true"] { margin-top: 8px; }
+.app .sidebar .sidefoot { gap: 7px; padding-top: 12px; }
+
+.app .settings-page { width: 100%; max-width: 1120px; display: grid; gap: 20px; }
+.settings-page-intro h2 { margin: 8px 0; font-size: clamp(24px, 3vw, 30px); letter-spacing: -.6px; }
+.settings-page-intro p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.settings-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.settings-tabs > button { display: flex; align-items: center; justify-content: center; gap: 9px; min-width: 0; padding: 14px 10px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); font-size: 12px; line-height: 1.4; }
+.settings-tabs > button[aria-selected="true"] { color: var(--accent); background: var(--accentbg); border-color: var(--accent); }
+.settings-tabs svg { flex-shrink: 0; }
+.settings-tabs small { padding: 2px 6px; border-radius: 20px; background: var(--surface2); color: var(--text); }
+.settings-tabs > button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.app .settings-panel { min-width: 0; padding: clamp(18px, 2.5vw, 30px); }
+.settings-panel[hidden] { display: none; }
+.settings-panel .appearance-settings { padding: 0; margin: 0; border: 0; }
+.settings-panel .p4e-manager { min-width: 0; margin: 0; }
+.settings-panel .p4e-profile { flex-wrap: wrap; }
+.settings-panel .p4e-profile > div:first-child { flex: 1 1 240px; min-width: 0; overflow-wrap: anywhere; }
+.settings-panel .p4e-editor :is(.compactform, .p5f-target-grid) {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 175px), 1fr));
+}
+.settings-panel .p4e-editor label { min-width: 0; overflow-wrap: anywhere; }
+.settings-panel .p4e-editor .compactform input { width: 100%; min-width: 0; }
+.settings-panel .p4e-section-table { padding: 4px; scrollbar-width: thin; }
+.settings-panel .between { flex-wrap: wrap; }
+.settings-section-heading h3 { margin-bottom: 7px; font-size: 18px; }
+.settings-section-heading p { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.settings-backup-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 22px 0 10px; }
+.settings-backup-actions > article { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface2); min-width: 0; }
+.settings-backup-actions > article > svg { color: var(--accent); }
+.settings-backup-actions h4 { margin: 0; font-size: 15px; }
+.settings-backup-actions p { margin: 0; line-height: 1.7; }
+.settings-backup-actions .primary, .settings-backup-actions .secondary { margin-top: auto; }
+.backup-choices { min-width: 0; width: 100%; margin: 0; padding: 10px; border: 1px solid var(--border); border-radius: 10px; }
+.backup-choices legend { padding-inline: 4px; font-weight: 650; }
+.backup-choices label { display: flex; align-items: flex-start; gap: 8px; padding-block: 4px; }
+.backup-choices input { flex-shrink: 0; }
+.backup-choices small { color: var(--muted); }
+.settings-file-button { position: relative; cursor: pointer; }
+.settings-file-button input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.settings-file-button:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
+.settings-file-button.is-busy { opacity: .6; }
+.settings-feedback { padding: 12px 16px; background: var(--accentbg); border: 1px solid var(--border); border-radius: 10px; font-size: 12px; line-height: 1.6; }
+.settings-storage-details { padding-top: 20px; }
+.settings-storage-details summary { cursor: pointer; color: var(--muted); font-size: 13px; padding-block: 4px; }
+.settings-storage-details > p { margin-top: 12px; line-height: 1.7; }
+.settings-storage-details > .muted { display: block; margin-top: 14px; overflow-wrap: anywhere; }
+.settings-storage-result { white-space: pre-line; padding: 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface2); }
+.settings-panel .settingrow:last-child { border-bottom: 0; }
+#settings-panel-connections .settingrow { padding-top: 8px; flex-wrap: wrap; }
+#settings-panel-connections .settingrow > div:first-child { flex: 1 1 260px; }
+@media (max-width: 650px) {
+  .settings-panel .p4e-profile > div:first-child { flex-basis: auto; }
+  .app.compact .sidebar-exam { display: block; height: auto; border: 0; background: none; }
+  .app.compact .sidebar-exam select { position: static; opacity: 1; height: 38px; }
+  .app.compact .sidebar-exam:focus-within { outline: none; }
+  .app .sidebar nav button { min-height: 38px; padding: 10px; }
+  .app .sidebar nav button[data-group-start="true"] { margin-top: 0; }
+  .settings-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .settings-tabs > button { justify-content: flex-start; padding: 12px; }
+  .settings-backup-actions { grid-template-columns: minmax(0, 1fr); }
+  .app .settings-panel { padding: 16px; }
+  .settings-panel .appearance-save { flex-wrap: wrap; }
+  #settings-panel-connections .settingrow input { max-width: 100%; }
+}

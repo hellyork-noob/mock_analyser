@@ -1,0 +1,147 @@
+/* Theme surfaces. Alpha colors let the app's ambient background show through.
+   Keep chart centers and floating menus opaque so their content stays legible. */
+.app {
+  --bg: #13151a; --side: rgba(27,30,37,.88); --surface: rgba(38,42,51,.76); --surface2: rgba(57,63,76,.58);
+  --border: rgba(188,199,220,.15); --text: #edf0f5; --muted: #a5afc0;
+  --accent: #82aaff; --accentbg: #82aaff1c; --cyan: #65c9da; --on-accent: #111318;
+  --solid-surface: #22252c; --glass-shadow: 0 7px 22px #0002, inset 0 1px 0 #ffffff0d;
+  background: radial-gradient(ellipse at 15% 0%, #7386aa0b, transparent 50%), var(--bg);
+}
+.app.light {
+  --bg: #f0f2f6; --side: rgba(255,255,255,.9); --surface: rgba(255,255,255,.82); --surface2: rgba(228,233,242,.75);
+  --border: rgba(70,86,115,.18); --text: #202531; --muted: #56647a;
+  --accent: #295cba; --accentbg: #295cba1c; --cyan: #176d85; --on-accent: #ffffff;
+  --solid-surface: #f8f9fc; --glass-shadow: 0 6px 20px #1e30430a, inset 0 1px 0 #fff;
+}
+
+/* Moving cards use translucent fills and highlights, without live backdrop blur.
+   Blurring every card forces large areas to be recomposited during scrolling. */
+.app .panel,
+.app .metric,
+.app .welcome,
+.app .v22-panel,
+.app .aa-pl-card {
+  box-shadow: var(--glass-shadow);
+}
+
+/* Only the stationary desktop sidebar uses a small backdrop blur. */
+@media (min-width: 651px) {
+  .app aside.sidebar {
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+  }
+}
+
+.app :is(.panel, .metric, .v22-panel, .v22-subject-card, .v22-chart-card, .aa-pl-card) {
+  border-radius: 20px;
+  border-color: var(--border);
+}
+
+.app .welcome {
+  background: linear-gradient(120deg, var(--accentbg), transparent 72%), var(--surface);
+}
+
+.app :is(.primary, .aa-pl-accent-btn) {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: transparent;
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 13%, transparent);
+}
+
+.app .sidebar button.active {
+  color: var(--accent);
+  background: var(--accentbg);
+  box-shadow: inset 3px 0 var(--accent);
+}
+
+.app :is(.secondary, .ghost, .iconbtn, .segmented, .aa-pl-quiet-btn, .v21-countdown-tool) {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), transparent), var(--surface2);
+  border-color: var(--border);
+}
+
+.app :is(input, select, textarea) {
+  background-color: color-mix(in srgb, var(--bg) 65%, transparent);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.app :is(button, a, input, select, textarea):focus-visible {
+  outline-color: var(--accent);
+}
+
+.app .p3-analytics .stats .metric:nth-child(1) { --aa-metric-color: var(--accent); --aa-metric-wash: var(--accentbg); }
+.app .p3-analytics .stats .metric:nth-child(2) { --aa-metric-color: var(--cyan); --aa-metric-wash: rgba(56, 234, 223, 0.1); }
+.app .p3-analytics .stats .metric:nth-child(3) { --aa-metric-color: #ffc94a; --aa-metric-wash: rgba(255, 201, 74, 0.1); }
+.app .p3-analytics .stats .metric:nth-child(4) { --aa-metric-color: #b4d3a0; --aa-metric-wash: rgba(180, 211, 160, 0.1); }
+
+.app .aa-pl-track > span {
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+}
+
+.app > main > header {
+  background: var(--side);
+}
+
+.app :is(.aa-pl-menu, .p4e-modal, .aa-md-modal),
+.app select option,
+.app :is(.p3-dial-core, .v22-ring-center, .aa-md-arc-center) {
+  background: var(--solid-surface);
+}
+
+/* Shared controls on the featured countdown keep their own space at all widths. */
+.v21-next-exam-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.v21-next-exam-heading .v21-countdown-eyebrow {
+  margin-bottom: 0;
+}
+
+.v21-next-exam-heading .v21-countdown-card-tools {
+  margin-left: auto;
+}
+
+/* A more solid surface is the fallback for browsers without backdrop blur. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .app {
+    --surface: #22252c;
+    --side: #1b1e25;
+  }
+  .app.light {
+    --surface: #f8f9fc;
+    --side: #f0f2f6;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .app {
+    --surface: #22252c;
+    --surface2: #303641;
+    --side: #1b1e25;
+  }
+  .app.light {
+    --surface: #f8f9fc;
+    --surface2: #e4e9f2;
+    --side: #f0f2f6;
+  }
+  .app aside.sidebar,
+  .app > main > header,
+  .app .panel,
+  .app .metric,
+  .app .welcome,
+  .app .v22-panel,
+  .app .aa-pl-card {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+.app[data-density="compact"] { --content-block-padding: 16px; }
+.app[data-density="compact"] .content { padding: var(--content-block-padding); }
+.app[data-density="compact"] :is(.panel,.metric,.v22-panel,.v22-chart-card) { padding: 14px; }
+.app[data-density="compact"] :is(th,td) { padding-block: 9px; }

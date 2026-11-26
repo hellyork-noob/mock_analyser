@@ -1,0 +1,207 @@
+/* ================================================================
+   ADVANCE ANALYZER v2.1 · UI POLISH PASS 5
+   Study Playlist + Settings — additive, theme-aware, CSS-only
+   ================================================================ */
+.app .aa-playlists-v3 {
+  min-width: 0;
+}
+.app .aa-pl-library-bar,
+.app .aa-pl-detail-top,
+.app .aa-pl-video-toolbar {
+  gap: 12px;
+  padding-block: 3px 12px;
+}
+.app .aa-pl-library-grid {
+  gap: 14px;
+  align-items: stretch;
+}
+.app .aa-pl-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 15px;
+  border-color: var(--border);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.045);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+.app .aa-pl-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.1);
+}
+.app .aa-pl-cover {
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+}
+.app .aa-pl-card-info {
+  flex: 1;
+  min-width: 0;
+}
+.app .aa-pl-card-info > strong {
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.app .aa-pl-card-meta {
+  font-variant-numeric: tabular-nums;
+}
+.app .aa-playlist-menu-wrap {
+  z-index: 35;
+}
+.app .aa-playlist-menu-wrap:has(.aa-pl-menu) {
+  z-index: 65;
+}
+.app .aa-pl-menu {
+  z-index: 70;
+  min-width: 175px;
+  padding: 6px;
+  border-radius: 12px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.19);
+}
+.app .aa-pl-menu button {
+  min-height: 35px;
+  border-radius: 8px;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+.app .aa-pl-video-list {
+  min-width: 0;
+}
+.app .aa-pl-video-row {
+  gap: 13px;
+  border-radius: 12px;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+.app .aa-pl-video-row:hover {
+  border-color: var(--accent);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.045);
+}
+.app .aa-pl-video-row.is-done {
+  border-color: color-mix(in srgb, #34d399 30%, var(--border));
+}
+.app .aa-pl-video-title {
+  min-width: 0;
+}
+.app .aa-pl-video-title strong {
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.app .aa-pl-video-controls {
+  gap: 7px;
+}
+.app .aa-pl-video-check {
+  accent-color: #34d399;
+}
+.app .aa-pl-track {
+  overflow: hidden;
+  border-radius: 999px;
+}
+.app .aa-pl-add-form :is(input, button),
+.app .aa-pl-video-controls :is(button, select) {
+  min-height: 36px;
+}
+.app .aa-pl-detail-heading {
+  border-radius: 15px;
+  overflow: hidden;
+}
+.app .aa-pl-detail-heading-info h2 {
+  letter-spacing: -0.35px;
+  line-height: 1.3;
+}
+.app .aa-pl-quiet-btn,
+.app .aa-pl-accent-btn,
+.app .aa-pl-back {
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+/* Settings: consistent preference rows, form controls and focus */
+.app .settings {
+  min-width: 0;
+}
+.app .settings > h3 {
+  letter-spacing: -0.4px;
+  margin-bottom: 7px;
+}
+.app .settings > p {
+  line-height: 1.55;
+  max-width: 76ch;
+}
+.app .settings .settingrow {
+  gap: 16px;
+  min-width: 0;
+  padding-block: 15px;
+  border-bottom: 1px solid var(--border);
+}
+.app .settings .settingrow > div:first-child {
+  min-width: 0;
+}
+.app .settings .settingrow strong {
+  line-height: 1.4;
+}
+.app .settings .settingrow small {
+  display: block;
+  line-height: 1.5;
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+.app .settings .settingrow :is(input, select) {
+  min-height: 37px;
+  border-radius: 9px;
+}
+.app .settings .settingrow input[aria-label="YouTube API key"] {
+  width: clamp(180px, 24vw, 310px);
+  max-width: 100%;
+}
+.app .settings .settingrow :is(button, .secondary) {
+  min-height: 36px;
+  border-radius: 9px;
+  white-space: normal;
+}
+.app .settings .notice {
+  border-radius: 11px;
+  line-height: 1.55;
+}
+@media (max-width: 720px) {
+  .app .settings .settingrow {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .app .settings .settingrow > div:first-child {
+    flex: 1 1 100%;
+  }
+  .app .aa-pl-library-grid {
+    gap: 10px;
+  }
+}
+@media (max-width: 580px) {
+  .app .aa-pl-card:hover {
+    transform: none;
+  }
+  .app .aa-pl-video-row {
+    gap: 8px;
+  }
+  .app .aa-pl-menu {
+    min-width: 160px;
+  }
+  .app .settings .settingrow input[aria-label="YouTube API key"] {
+    width: min(100%, 260px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app .aa-pl-card,
+  .app .aa-pl-video-row,
+  .app .aa-pl-menu button {
+    transition: none !important;
+  }
+}
+

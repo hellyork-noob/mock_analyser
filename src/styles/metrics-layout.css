@@ -1,0 +1,80 @@
+/* A visible workspace instead of a single understated disclosure row. */
+.app .metrics-workspace { min-width: 0; scroll-margin-top: 16px; border: 1px solid var(--border); border-radius: 18px; background: var(--surface); }
+.metrics-body { display: grid; gap: 16px; min-width: 0; padding: 18px; border-top: 1px solid var(--border); }
+.metrics-filter-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; align-items: end; min-width: 0; }
+.metrics-filter-bar label { display: grid; gap: 7px; color: var(--muted); font-size: 11px; min-width: 0; }
+.metrics-filter-bar input, .metrics-filter-bar select { width: 100%; min-width: 0; padding: 10px 8px; font-size: 12px; height: 41px; }
+.metrics-filter-bar > button { height: 41px; justify-content: center; font-size: 11px; }
+.metrics-scope { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; color: var(--muted); font-size: 11px; line-height: 1.6; overflow-wrap: anywhere; }
+.metrics-scope strong { color: var(--text); font-weight: 600; }
+.metrics-content { display: grid; gap: 16px; min-width: 0; }
+.metrics-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.metrics-kpis .panel { display: grid; align-content: start; gap: 12px; }
+.metrics-kpis small, .metrics-kpis span { color: var(--muted); font-size: 11px; line-height: 1.6; }
+.metrics-kpis strong { font-size: clamp(23px, 2.5vw, 30px); line-height: 1.3; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.metrics-kpis em { font-size: 13px; font-style: normal; color: var(--muted); white-space: nowrap; }
+.metrics-gauges { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.metrics-gauge { display: flex; align-items: center; flex-direction: column; gap: 10px; text-align: center; min-width: 0; }
+.metrics-dial { width: min(140px, 100%); aspect-ratio: 1; border-radius: 50%; padding: 12px; display: grid; place-items: center; }
+.metrics-dial > div { width: 100%; height: 100%; display: grid; place-items: center; border-radius: 50%; background: var(--solid-surface); }
+.metrics-dial strong { font-size: clamp(20px, 2.4vw, 27px); letter-spacing: -.6px; }
+.metrics-gauge > strong { font-size: 13px; }
+.metrics-gauge > small { color: var(--muted); font-size: 11px; line-height: 1.6; }
+.metrics-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 230px; padding: 28px; gap: 12px; }
+.metrics-empty > svg { color: var(--accent); }
+.metrics-empty h3, .metrics-empty p { margin: 0; }
+.metrics-empty p { line-height: 1.7; }
+.metrics-empty > div { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+.app .metrics-content .v22-new-analytics { margin: 0; gap: 16px; }
+.app .metrics-content .v22-subject-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 14px; }
+.app .metrics-content .v22-subject-heading { flex-wrap: wrap; align-items: start; }
+.app .metrics-content .v22-subject-heading strong { white-space: normal; overflow-wrap: anywhere; font-size: 14px; }
+.app .metrics-content .v22-subject-card { padding: 18px; }
+.app .metrics-content .v22-ring { width: min(150px, 100%); margin: 20px auto; padding: 15px; }
+.app .metrics-content .v22-ring-center b { font-size: 25px; }
+.metrics-qualifying { display: block; margin-top: 8px; color: var(--muted); font-size: 10px; }
+.app .metrics-content .v22-chart-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.app .metrics-content .v22-chart-card { padding: 20px 14px; }
+.app .analytics-detail .v22-breakdown-panel { margin-top: 0 !important; padding: 20px !important; }
+.app .analytics-detail .v22-breakdown-scroll { overflow: auto; scrollbar-width: thin; }
+.app .analytics-detail .v22-breakdown-table { min-width: 920px; table-layout: fixed; }
+.app .analytics-detail .v22-breakdown-table thead tr:first-child th:first-child,
+.app .analytics-detail .v22-breakdown-table tbody th { width: 190px; position: sticky; left: 0; background: var(--glass-sticky-surface, var(--solid-surface)); z-index: 1; }
+.app .analytics-detail .v22-breakdown-table thead tr:first-child th:not(:first-child) { width: auto; }
+.app .analytics-detail .v22-breakdown-table :is(th, td) { font-size: 12px !important; padding: 13px 10px; white-space: nowrap; }
+.metrics-period-count { display: block; margin-top: 5px; color: var(--muted); font-size: 10px; font-weight: 400; }
+.metrics-scroll-hint { color: var(--muted); font-size: 11px; margin-top: 12px; }
+.metrics-speed-table { min-width: 610px; }
+.metrics-speed-table :is(th, td) { padding: 14px 12px; font-size: 12px; }
+.metrics-content .p5-recommendations p { line-height: 1.7; }
+.metrics-content .p5-tablewrap { overflow-x: auto; }
+.metrics-content .p5-tablewrap table { min-width: 550px; }
+@media (max-width: 1100px) { .metrics-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+  .metrics-body { padding: 12px; }
+  .metrics-filter-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .metrics-filter-bar .metrics-window,
+  .metrics-filter-bar[data-mode="Sectional"] .metrics-provider { grid-column: 1 / -1; }
+  .metrics-filter-bar > button { grid-column: 1 / -1; }
+  .metrics-kpis { gap: 8px; }
+  .metrics-kpis .panel { padding: 13px; }
+  .metrics-gauges { grid-template-columns: minmax(0, 1fr); }
+  .metrics-gauge { display: grid; grid-template-columns: 100px minmax(0, 1fr); text-align: left; column-gap: 15px; row-gap: 5px; }
+  .metrics-dial { grid-row: 1 / 3; width: 100px; padding: 9px; }
+  .metrics-gauge > strong { align-self: end; }
+  .metrics-gauge > small { align-self: start; }
+  .app .analytics-detail .v22-breakdown-panel { padding: 14px !important; }
+  .app .analytics-detail .v22-breakdown-table { min-width: 860px; }
+  .app .analytics-detail .v22-breakdown-table thead tr:first-child th:first-child,
+  .app .analytics-detail .v22-breakdown-table tbody th { width: 140px; white-space: normal; overflow-wrap: anywhere; }
+}
+
+.metrics-trend-data { margin-block: 18px; }
+.metrics-trend-data .tablewrap { max-height: 360px; margin-top: 12px; }
+.metrics-trend-data table { min-width: 700px; font-size: 12px; }
+.metrics-trend-data th, .metrics-trend-data td { padding: 12px; line-height: 1.6; }
+.metrics-trend-data thead th { position: sticky; top: 0; background: var(--glass-sticky-surface, var(--solid-surface)); z-index: 1; }
+
+/* Every metric is visible in one continuous page; no disclosure or tab panels. */
+.app .metrics-single-page { border: 0; background: none; border-radius: 0; }
+.metrics-single-page .metrics-body { padding: 0; border: 0; }

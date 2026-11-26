@@ -1,0 +1,363 @@
+/* ==============================================================
+   v2.1 UI POLISH — consistent design tokens, density & interaction
+   Additive layer: existing page-specific selectors remain intact.
+   ============================================================== */
+.app {
+  --ui-radius: 14px;
+  --ui-radius-sm: 10px;
+  --ui-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  --ui-focus: rgba(139, 124, 255, 0.26);
+  --ui-duration: 180ms;
+  --content-block-padding: clamp(14px, 1.8vw, 26px);
+  color-scheme: dark;
+}
+.app.light {
+  --ui-shadow: 0 8px 28px rgba(27, 37, 64, 0.055);
+  --ui-focus: rgba(102, 86, 216, 0.2);
+  color-scheme: light;
+}
+.app main {
+  min-width: 0;
+}
+.app header {
+  padding: 16px clamp(16px, 2.2vw, 30px);
+  min-height: 78px;
+  gap: 12px;
+  background: color-mix(in srgb, var(--bg) 92%, var(--surface));
+}
+.app header h1 {
+  font-size: clamp(20px, 2vw, 25px);
+  line-height: 1.2;
+  letter-spacing: -0.65px;
+}
+.app .content {
+  padding: var(--content-block-padding) clamp(14px, 1.8vw, 26px);
+  max-width: 1550px;
+}
+.app aside.sidebar {
+  padding: 18px 11px;
+  gap: 21px;
+}
+.app .sidebar nav {
+  gap: 3px;
+}
+.app .sidebar button {
+  padding: 11px 13px;
+  border-radius: var(--ui-radius-sm);
+  transition:
+    background var(--ui-duration) ease,
+    color var(--ui-duration) ease,
+    transform var(--ui-duration) ease;
+}
+.app .sidebar button.active {
+  background: var(--accentbg);
+  color: var(--accent);
+  box-shadow: inset 3px 0 var(--accent);
+}
+.app .sidebar button:hover:not(.active) {
+  background: var(--surface2);
+  color: var(--text);
+}
+.app .brand {
+  padding: 3px 9px;
+}
+.app .brandicon {
+  box-shadow: 0 4px 18px rgba(139, 124, 255, 0.2);
+}
+.app .panel {
+  border-radius: var(--ui-radius);
+  box-shadow: var(--ui-shadow);
+}
+.app .welcome {
+  border-radius: var(--ui-radius);
+  padding: clamp(16px, 2vw, 25px);
+  margin-bottom: 16px;
+}
+.app .panelhead {
+  gap: 10px;
+}
+.app .panelhead h3,
+.app .panel h3 {
+  letter-spacing: -0.3px;
+}
+.app :is(input, select, textarea) {
+  min-width: 0;
+  accent-color: var(--accent);
+  transition:
+    border-color var(--ui-duration) ease,
+    box-shadow var(--ui-duration) ease,
+    background var(--ui-duration) ease;
+}
+.app :is(button, input, select, textarea, a):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--ui-focus);
+}
+.app button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.app :is(button, .iconbtn, .ghost) {
+  transition:
+    background-color var(--ui-duration) ease,
+    border-color var(--ui-duration) ease,
+    color var(--ui-duration) ease,
+    transform var(--ui-duration) ease;
+}
+.app :is(.iconbtn, .ghost):hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.app .tablewrap {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.app table {
+  font-variant-numeric: tabular-nums;
+}
+.app :is(th, td) {
+  vertical-align: middle;
+}
+.app :is(.panel, .welcome, .v21-addmock, .aa-history-panel, .aa-md-modal) {
+  min-width: 0;
+}
+.app .pill {
+  border-radius: 999px;
+}
+.app .headright {
+  gap: 9px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.app :is(.v21-metric-fraction, .metric strong) {
+  font-variant-numeric: tabular-nums;
+}
+.app :is(.aa-playlist-menu-wrap, .aa-pl-card-menu, .p4-history-menu) {
+  z-index: 30;
+}
+@media (max-width: 1000px) {
+  .app { --content-block-padding: 16px; }
+  .app header {
+    padding: 14px 18px;
+  }
+  .app .content {
+    padding: 16px;
+  }
+}
+@media (max-width: 650px) {
+  .app { --content-block-padding: 11px; }
+  .app header {
+    min-height: 64px;
+    gap: 9px;
+  }
+  .app .content {
+    padding: 11px;
+  }
+  .app .welcome {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+  .app .panel {
+    box-shadow: none;
+  }
+  .app .headright {
+    gap: 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app,
+  .app *,
+  .app *::before,
+  .app *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Countdown cards — visual polish and screenshot alignment fix */
+.v21-countdown .v21-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+.v21-countdown .v21-countdown-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  min-height: 128px;
+  padding: 15px 16px !important;
+  overflow: hidden;
+  border-radius: 14px;
+  border-left-width: 5px;
+  background: var(--surface);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.045);
+}
+.v21-countdown .v21-countdown-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.055;
+  background: linear-gradient(100deg, currentColor, transparent 72%);
+}
+.v21-countdown .v21-urgency-past {
+  color: #64748b;
+}
+.v21-countdown .v21-urgency-urgent {
+  color: #ef4444;
+}
+.v21-countdown .v21-urgency-near {
+  color: #f97316;
+}
+.v21-countdown .v21-urgency-soon {
+  color: #06b6d4;
+}
+.v21-countdown .v21-urgency-far {
+  color: #6366f1;
+}
+.v21-countdown .v21-countdown-card-main,
+.v21-countdown .v21-countdown-card-footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+}
+.v21-countdown .v21-countdown-card-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.v21-countdown .v21-countdown-card-name {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  overflow-wrap: anywhere;
+}
+.v21-countdown .v21-countdown-card-info time {
+  font-size: 12px;
+  color: var(--muted);
+}
+.v21-countdown .v21-countdown-card-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+  flex-shrink: 0;
+  min-width: 64px;
+}
+.v21-countdown .v21-countdown-card-status > strong {
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -1.3px;
+}
+.v21-countdown .v21-countdown-card-status > small {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+  margin-top: 4px;
+}
+.v21-countdown .v21-countdown-past-pill {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(100, 116, 139, 0.12);
+  color: #64748b;
+}
+.v21-countdown .v21-countdown-card-footer {
+  align-items: center;
+  margin-top: auto;
+}
+.v21-countdown .v21-countdown-card-category {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.v21-countdown .v21-countdown-card-tools {
+  display: flex;
+  gap: 5px;
+}
+.v21-countdown .v21-countdown-tool {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--muted);
+  cursor: pointer;
+}
+.v21-countdown .v21-countdown-tool svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.v21-countdown .v21-countdown-tool:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--surface);
+}
+.v21-countdown .v21-countdown-tool-danger:hover {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+@media (max-width: 650px) {
+  .v21-countdown .v21-countdown-grid {
+    grid-template-columns: 1fr;
+  }
+  .v21-countdown .v21-countdown-card {
+    min-height: 118px;
+  }
+}
+
+/* v2.1 countdown — stronger, colored gradients for all urgency levels */
+.v21-countdown .v21-countdown-card,
+.v21-countdown .v21-next-exam {
+  --countdown-tint: #6366f1;
+  background: linear-gradient(
+    105deg,
+    color-mix(in srgb, var(--countdown-tint) 22%, var(--surface)) 0%,
+    color-mix(in srgb, var(--countdown-tint) 12%, var(--surface)) 52%,
+    var(--surface) 100%
+  ) !important;
+  border-left-color: var(--countdown-tint);
+}
+.v21-countdown .v21-urgency-urgent {
+  --countdown-tint: #ef4444;
+}
+.v21-countdown .v21-urgency-near {
+  --countdown-tint: #f97316;
+}
+.v21-countdown .v21-urgency-soon {
+  --countdown-tint: #06b6d4;
+}
+.v21-countdown .v21-urgency-far {
+  --countdown-tint: #6366f1;
+}
+.v21-countdown .v21-urgency-past {
+  --countdown-tint: #64748b;
+}
+/* Remove the extra low-opacity overlay: the actual card background now provides the gradient. */
+.v21-countdown .v21-countdown-card::before {
+  display: none;
+}
+

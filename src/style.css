@@ -1,0 +1,32 @@
+/* Application styles. Keep this import order: later files refine earlier rules.
+ * Theme surfaces and glass effects are centralized in styles/theme.css.
+ * Component layouts come first, followed by responsive, theme and dialog rules.
+ */
+@import "./styles/foundation.css";
+@import "./styles/analytics-and-exam-tools.css";
+@import "./styles/layout-and-accessibility.css";
+@import "./styles/playlists.css";
+@import "./styles/mock-forms-and-history.css";
+@import "./styles/countdown.css";
+@import "./styles/shared-polish.css";
+@import "./styles/analytics-polish.css";
+@import "./styles/mock-form-polish.css";
+@import "./styles/history-and-detail-polish.css";
+@import "./styles/playlist-and-settings-polish.css";
+@import "./styles/analytics-v22.css";
+@import "./styles/responsive.css";
+@import "./styles/theme.css";
+@import "./styles/dialogs.css";
+@import "./styles/study.css";
+@import "./styles/sidebar-controls.css";
+@import "./styles/workspace-upgrades.css";
+@import "./styles/settings-layout.css";
+@import "./styles/countdown-bands.css";
+@import "./styles/metrics-layout.css";
+@import "./styles/analytics-effects.css";
+@import "./styles/background-glass.css";
+@import "./styles/select-menu.css";
+@import "./styles/select-menu.css";
+
+@import "./styles/focus-timer-widget.css";
+@import "./styles/performance.css";

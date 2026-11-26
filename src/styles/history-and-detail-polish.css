@@ -1,0 +1,329 @@
+/* =============================================================
+   Advance Analyzer v2.1 — UI Polish Pass 4: History + Details
+   Additive styling; no data or component behavior changes.
+   ============================================================= */
+.app .aa-history-panel {
+  border-radius: 16px;
+  padding: 18px 20px;
+  overflow: visible;
+}
+.app .aa-history-head {
+  margin-bottom: 16px;
+  align-items: center;
+}
+.app .aa-history-head h3 {
+  font-size: 16px;
+  letter-spacing: -0.35px;
+}
+.app .aa-history-count {
+  min-width: 27px;
+  height: 25px;
+  padding: 2px 8px;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent);
+}
+.app .aa-history-head .p4-history-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.app .aa-history-head .p4-history-filters :is(input, select) {
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface2);
+  color: var(--text);
+  padding: 8px 11px;
+  outline-offset: 2px;
+}
+.app .aa-history-head .p4-history-filters :is(input, select):focus-visible {
+  border-color: var(--accent);
+}
+.app .aa-history-reset {
+  height: 38px;
+  border-radius: 10px;
+  font-weight: 650;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+.app .aa-history-table {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: thin;
+}
+.app .aa-history-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+.app .aa-history-table thead th {
+  background: var(--surface2);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.025em;
+  color: var(--muted);
+  padding: 12px 11px;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+.app .aa-history-table tbody td {
+  padding: 11px;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  font-size: 12px;
+}
+.app .aa-history-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.app .aa-history-table tbody tr {
+  transition: background 0.18s ease;
+}
+.app .aa-history-table tbody tr:hover {
+  background: color-mix(in srgb, var(--accent) 5%, var(--surface));
+}
+.app .aa-history-table td:first-child {
+  font-weight: 700;
+  line-height: 1.35;
+}
+.app .aa-history-table td small {
+  color: var(--muted);
+  font-weight: 500;
+}
+.app .aa-history-table td:last-child {
+  min-width: 205px;
+  width: 205px;
+}
+.app .aa-history-table td .actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: nowrap;
+}
+.app .aa-history-table .actions :is(button, a) {
+  border-radius: 9px;
+  min-height: 32px;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+.app .aa-history-table .actions .aa-history-view {
+  min-width: 105px;
+  font-weight: 750;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.app .aa-history-table .actions .aa-history-view:hover {
+  background: var(--accent) !important;
+  color: white !important;
+}
+/* Detail viewer is outside .app in some render trees; selectors are global. */
+.aa-md-overlay {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+.aa-md-modal {
+  width: min(1100px, 100%);
+  padding: clamp(16px, 2vw, 25px);
+  border-radius: 18px;
+  scrollbar-width: thin;
+}
+.aa-md-header {
+  gap: 14px;
+  padding-bottom: 16px;
+}
+.aa-md-header .eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  font-weight: 800;
+  color: var(--accent);
+}
+.aa-md-header h2 {
+  font-size: clamp(19px, 2.2vw, 25px);
+  letter-spacing: -0.65px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.aa-md-header p {
+  line-height: 1.5;
+}
+.aa-md-close {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+.aa-md-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.aa-md-summary {
+  gap: 10px;
+  margin: 16px 0 21px;
+}
+.aa-md-summary > div {
+  position: relative;
+  overflow: hidden;
+  min-height: 88px;
+  padding: 14px 15px;
+  border-radius: 13px;
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--accent) 7%, var(--surface2)),
+    var(--surface2) 75%
+  );
+}
+.aa-md-summary > div::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--accent);
+  opacity: 0.65;
+}
+.aa-md-summary small {
+  font-weight: 650;
+  letter-spacing: 0.015em;
+}
+.aa-md-summary strong {
+  font-size: clamp(20px, 2vw, 25px);
+  letter-spacing: -0.6px;
+  line-height: 1.2;
+}
+.aa-md-section-head {
+  margin-bottom: 12px;
+  gap: 10px;
+}
+.aa-md-section-head h3 {
+  font-size: 16px;
+  letter-spacing: -0.3px;
+}
+.aa-md-section-head span {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 10px;
+}
+.aa-md-subjects {
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}
+.aa-md-subject {
+  border-radius: 14px;
+  padding: 16px 13px;
+  transition:
+    border-color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.aa-md-subject:hover {
+  border-color: color-mix(in srgb, var(--accent) 36%, var(--border));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+.aa-md-subject h4 {
+  font-size: 14px;
+  letter-spacing: -0.15px;
+}
+.aa-md-arc {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.07));
+}
+.aa-md-arc-center strong {
+  letter-spacing: -0.5px;
+}
+.aa-md-marks {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.25px;
+}
+.aa-md-counts {
+  margin-top: 13px;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--border);
+}
+.aa-md-counts b {
+  font-variant-numeric: tabular-nums;
+}
+.aa-md-sub-meta {
+  line-height: 1.5;
+}
+.aa-md-footer {
+  background: var(--surface2);
+  border-radius: 13px;
+  margin-top: 16px;
+}
+.aa-md-facts {
+  gap: 10px 18px;
+  line-height: 1.5;
+}
+.aa-md-link {
+  border-radius: 9px;
+  padding: 8px 10px;
+  background: var(--accentbg);
+  white-space: nowrap;
+}
+.aa-md-link:hover {
+  text-decoration: underline;
+}
+@media (max-width: 700px) {
+  .app .aa-history-panel {
+    padding: 12px;
+  }
+  .app .aa-history-head .p4-history-filters {
+    width: 100%;
+    margin-left: 0;
+  }
+  .app .aa-history-head .p4-history-filters input {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+  }
+  .app .aa-history-head .p4-history-filters select {
+    flex: 1 1 125px;
+    min-width: 0;
+    max-width: none;
+  }
+  .app .aa-history-table tbody td {
+    padding: 10px 9px;
+  }
+  .aa-md-modal {
+    max-height: 97dvh;
+    padding: 14px;
+  }
+  .aa-md-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .aa-md-summary > div {
+    min-height: 77px;
+    padding: 11px;
+  }
+  .aa-md-subjects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .aa-md-subject {
+    padding: 12px 9px;
+  }
+  .aa-md-subject:hover {
+    transform: none;
+  }
+}
+@media (max-width: 400px) {
+  .aa-md-subjects {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aa-md-subject,
+  .aa-md-close,
+  .app .aa-history-table tbody tr {
+    transition: none !important;
+  }
+}
+

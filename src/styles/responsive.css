@@ -1,0 +1,337 @@
+/* ============================================================
+   v2.2.1 — Responsive width containment
+   Prevent analytics cards and charts from extending offscreen.
+   ============================================================ */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.app {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.app > main,
+.app main,
+.app .content,
+.app .p3-analytics,
+.app .v22-new-analytics,
+.app .v22-panel,
+.app .v22-chart-card,
+.app .v22-subject-card {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.app .content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Each KPI must shrink within its allocated grid column. */
+.app .stats,
+.app .p8-overview,
+.app .v22-subject-grid,
+.app .v22-chart-grid {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.app .stats > *,
+.app .p8-overview > *,
+.app .v22-subject-grid > *,
+.app .v22-chart-grid > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.app .stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.app .metric,
+.app .metricvalue {
+  min-width: 0;
+}
+
+.app .metricvalue {
+  overflow-wrap: anywhere;
+}
+
+/* Gauges are equal-width and never force a wider page. */
+.app .p3-gauge-grid {
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.app .p3-gauge-grid > *,
+.app .p3-gauge {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Charts scale to their card; tables scroll inside their own frame. */
+.app .v22-chart-card svg,
+.app .v22-chart-card canvas,
+.app .p3-analytics svg {
+  max-width: 100%;
+}
+
+.app .v22-breakdown-scroll,
+.app .tablewrap {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+/* Break the header/filters onto another line before they overflow. */
+.app .analyticsbar,
+.app .toolbar,
+.app header,
+.app .headright {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.app .analyticsbar {
+  flex-wrap: wrap;
+}
+
+.app .toolbar {
+  flex-wrap: wrap;
+}
+
+/* Four cards fit only while there is adequate viewport width. */
+@media (max-width: 1450px) {
+  .app .content {
+    padding-inline: 22px;
+  }
+  .app .stats {
+    gap: 12px;
+  }
+  .app .metric {
+    padding: 16px;
+  }
+  .app .metricvalue {
+    font-size: clamp(21px, 2vw, 29px);
+  }
+}
+
+@media (max-width: 1150px) {
+  .app .stats,
+  .app .v22-chart-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .app .content {
+    padding-inline: 12px;
+  }
+  .app .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .app .metricvalue {
+    font-size: 22px;
+  }
+}
+
+/* v2.2.2 — contain newly added analytics inside the available main column */
+.app {
+  min-width: 0;
+}
+.app > main {
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+.app .content {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* A grid item's default min-width:auto can force the entire page wider. */
+.app .v22-new-analytics,
+.app .v22-new-analytics > *,
+.app .v22-trends,
+.app .v22-panel,
+.app .v22-panel-heading,
+.app .v22-trends-heading,
+.app .v22-subject-grid,
+.app .v22-chart-grid,
+.app .v22-chart-card,
+.app .v22-subject-card,
+.app .v22-breakdown-panel {
+  min-width: 0;
+  max-width: 100%;
+}
+.app .v22-new-analytics {
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
+}
+.app .v22-new-analytics > * {
+  width: 100%;
+}
+.app .v22-trends {
+  display: block;
+  width: 100%;
+}
+.app .v22-chart-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.app .v22-subject-grid > *,
+.app .v22-chart-grid > * {
+  min-width: 0;
+  width: 100%;
+}
+.app .v22-subject-heading,
+.app .v22-subject-foot,
+.app .v22-chart-title,
+.app .v22-consistency-foot {
+  min-width: 0;
+}
+.app .v22-subject-heading strong {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.app .v22-subject-heading span {
+  flex: 0 0 auto;
+}
+.app .v22-subject-foot {
+  flex-wrap: wrap;
+}
+.app .v22-chart-card .recharts-responsive-container,
+.app .v22-chart-card .recharts-wrapper {
+  max-width: 100%;
+  min-width: 0;
+}
+.app .v22-breakdown-scroll {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+}
+/* The wide breakdown table may scroll horizontally, but only within its panel. */
+.app .v22-breakdown-table {
+  width: 100%;
+  min-width: 1060px;
+}
+.app .v22-panel-heading {
+  flex-wrap: wrap;
+}
+.app .v22-trends-heading label {
+  min-width: 0;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+.app .v22-trends-heading select {
+  max-width: 100%;
+}
+@media (max-width: 1350px) {
+  .app .v22-chart-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 680px) {
+  .app .v22-panel,
+  .app .v22-chart-card {
+    padding: 14px;
+  }
+}
+
+/* Subject performance: one four-card row at desktop widths.
+   Earlier 1100/1150/1500px 2-column overrides have been removed. */
+@media (min-width: 701px) and (max-width: 1450px) {
+  .v22-ring {
+    padding: 20px;
+    margin: 18px auto 14px;
+  }
+  .v22-ring-center b {
+    font-size: clamp(16px, 1.8vw, 25px);
+  }
+  .v22-subject-heading strong {
+    font-size: 12px;
+  }
+  .v22-subject-heading span {
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+}
+
+/* V2.2 final: fit all sectional breakdown columns within the panel */
+.app .v22-breakdown-panel,
+.app .v22-breakdown-scroll {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.app .v22-breakdown-scroll {
+  overflow-x: hidden;
+  overflow-y: visible;
+  scrollbar-width: none;
+}
+.app .v22-breakdown-table {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+/* 22% for subject, remaining 78% shared by 9 metrics. */
+.app .v22-breakdown-table thead tr:first-child th:first-child {
+  width: 22%;
+}
+.app .v22-breakdown-table thead tr:first-child th:not(:first-child) {
+  width: 26%;
+}
+.app .v22-breakdown-table thead tr:nth-child(2) th,
+.app .v22-breakdown-table tbody td {
+  width: auto;
+  min-width: 0;
+  padding-left: clamp(3px, 0.5vw, 9px);
+  padding-right: clamp(3px, 0.5vw, 9px);
+  font-size: clamp(10px, 0.85vw, 13px);
+  white-space: nowrap;
+  text-overflow: clip;
+}
+.app .v22-breakdown-table tbody th {
+  width: 22%;
+  min-width: 0;
+  padding-left: clamp(7px, 1vw, 18px);
+  padding-right: 6px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  font-size: clamp(11px, 0.95vw, 14px);
+}
+.app .v22-breakdown-table thead tr:first-child th {
+  font-size: clamp(11px, 1vw, 15px);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+/* Tighten padding on narrower viewports while keeping all 10 columns visible. */
+@media (max-width: 1100px) {
+  .app .v22-breakdown-panel {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  .app .v22-breakdown-table thead tr:nth-child(2) th,
+  .app .v22-breakdown-table tbody td {
+    font-size: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+}

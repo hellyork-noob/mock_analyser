@@ -1,0 +1,69 @@
+/* The picker stays a native select, including keyboard navigation and form behavior. */
+.app select option,
+.app select optgroup {
+  color: var(--text);
+  background-color: var(--glass-underlay, var(--solid-surface));
+}
+
+@supports (appearance: base-select) and selector(::picker(select)) {
+  .app select:not([multiple], [size]:not([size="1"])),
+  .app select:not([multiple], [size]:not([size="1"]))::picker(select) {
+    appearance: base-select;
+  }
+
+  .app select::picker-icon {
+    color: var(--muted);
+    margin-inline-start: auto;
+  }
+
+  .app select:open {
+    border-color: var(--accent);
+  }
+
+  .app select::picker(select) {
+    color: var(--text);
+    background: var(--glass-reflection), var(--glass-sticky-surface, var(--solid-surface));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--glass-elevation);
+    margin-block: 4px;
+    padding: 4px;
+    min-inline-size: max(7rem, anchor-size(width));
+    max-inline-size: calc(100vw - 16px);
+    max-block-size: min(20rem, 60dvh);
+    overflow: auto;
+    scrollbar-width: thin;
+  }
+
+  .app select option,
+  .app select optgroup {
+    background: transparent;
+  }
+
+  .app select option {
+    padding: 8px 10px;
+    border-radius: 8px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .app select option:checked {
+    background: var(--accentbg);
+    font-weight: 650;
+  }
+
+  .app select option:checked::checkmark {
+    color: var(--accent);
+  }
+
+  .app select option:enabled:is(:hover, :focus) {
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
+    color: var(--text);
+    outline: none;
+  }
+
+  .app select option:disabled {
+    color: var(--muted);
+    opacity: .7;
+  }
+}

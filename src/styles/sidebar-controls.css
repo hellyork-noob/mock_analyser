@@ -1,0 +1,46 @@
+/* Workspace controls replace the old page header. Keep them reachable when the
+   desktop rail collapses and when navigation becomes a mobile toolbar. */
+.app .sidebar .sidefoot {
+  display: grid;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.sidebar-preferences { display: grid; gap: 8px; min-width: 0; }
+.sidebar-exam { display: grid; gap: 8px; min-width: 0; position: relative; }
+.sidebar-control-label { font-size: 10px; font-weight: 700; color: var(--muted); padding-inline: 10px; }
+.app .sidebar-exam select { width: 100%; min-width: 0; padding: 11px 8px; font-size: 12px; text-overflow: ellipsis; }
+.sidebar-exam-icon { display: none; }
+.app .sidebar .sidebar-theme { font-size: 12px; padding: 11px 12px; border: 1px solid var(--border); background: var(--surface2); }
+.app .sidebar .sidebar-collapse { font-size: 12px; }
+@media (min-width: 651px) {
+  .app .sidebar nav { min-height: 0; overflow-y: auto; flex-shrink: 1; }
+  .app .sidebar .brand, .app .sidebar .navlabel, .app .sidebar .sidefoot { flex-shrink: 0; }
+}
+.app.compact .sidebar-control-label,
+.app.compact .sidebar-theme span { display: none; }
+.app.compact .sidebar-exam { height: 42px; display: grid; place-items: center; border: 1px solid var(--border); background: var(--surface2); border-radius: 10px; }
+.app.compact .sidebar-exam-icon { display: block; color: var(--muted); pointer-events: none; }
+.app.compact .sidebar-exam select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.app.compact .sidebar-exam:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.app.compact .sidebar .sidebar-theme,
+.app.compact .sidebar .sidebar-collapse { justify-content: center; padding-inline: 8px; }
+@media (min-width: 651px) and (max-width: 1000px) {
+  .app .sidebar-control-label, .app .sidebar-theme span { display: none; }
+  .app .sidebar-exam { height: 42px; display: grid; place-items: center; border: 1px solid var(--border); background: var(--surface2); border-radius: 10px; }
+  .app .sidebar-exam-icon { display: block; color: var(--muted); pointer-events: none; }
+  .app .sidebar-exam select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+  .app .sidebar-exam:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .app .sidebar .sidebar-theme { justify-content: center; padding-inline: 8px; }
+  .app .sidebar .sidebar-collapse { font-size: 0; justify-content: center; padding-inline: 8px; }
+}
+@media (max-width: 650px) {
+  .app .sidebar .sidefoot { display: block; border: 0; padding: 0; margin-top: 0; }
+  .app .sidebar-preferences { display: flex; align-items: center; gap: 8px; }
+  .app .sidebar-exam { display: block; height: auto; flex: 1; min-width: 0; border: 0; background: none; }
+  .app .sidebar-exam .sidebar-control-label,
+  .app .sidebar-exam .sidebar-exam-icon { display: none; }
+  .app .sidebar-exam select { position: static; opacity: 1; height: 38px; font-size: 11px; }
+  .app .sidebar .sidebar-theme { width: 38px; height: 38px; padding: 8px; flex-shrink: 0; justify-content: center; }
+  .app .sidebar-theme span, .app .sidebar .sidebar-collapse { display: none; }
+}

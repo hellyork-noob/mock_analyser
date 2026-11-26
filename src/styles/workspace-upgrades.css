@@ -1,0 +1,42 @@
+/* Stable subject and semantic colors are independent of the interface accent. */
+.app {
+  --subject-1: #83aff1; --subject-2: #baa1e9; --subject-3: #73c8af;
+  --subject-4: #dfba78; --subject-5: #e09cb4; --subject-6: #80c1d2;
+  --success: #73c8af; --warning: #dfba78; --danger: #ed9fa8;
+}
+.app.light {
+  --subject-1: #315fa3; --subject-2: #7541a2; --subject-3: #19725c;
+  --subject-4: #805b12; --subject-5: #a23b62; --subject-6: #1b6b80;
+  --success: #19725c; --warning: #805b12; --danger: #a33247;
+}
+.app .error { color: var(--danger) !important; }
+.app .v22-strong { color: var(--success); }
+.app .v22-average { color: var(--warning); }
+.app .v22-weak { color: var(--danger); }
+.appearance-settings { padding: 22px 0; border-bottom: 1px solid var(--border); margin-bottom: 10px; }
+.appearance-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 20px 0; }
+.appearance-grid label, .appearance-save { display: grid; gap: 7px; color: var(--muted); font-size: 12px; min-width: 0; }
+.appearance-grid select { width: 100%; }
+.appearance-accents { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.appearance-accents > button { border: 1px solid var(--border); background: var(--surface2); color: var(--text); display: flex; gap: 8px; align-items: center; padding: 10px; border-radius: 10px; text-transform: capitalize; font-size: 12px; }
+.appearance-accents > button[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.appearance-accents button > span { width: 13px; height: 13px; border-radius: 50%; }
+.appearance-custom { display: inline-flex; gap: 10px; align-items: center; color: var(--muted); font-size: 12px; margin-block: 10px; }
+.app .appearance-custom input[type="color"] { width: 46px; height: 36px; padding: 3px; cursor: pointer; }
+.appearance-preview { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 20px; margin: 20px 0 12px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface2); }
+.appearance-preview h3 { margin: 7px 0; }
+.appearance-preview p { margin-bottom: 0; }
+.appearance-settings > .muted { display: block; line-height: 1.6; }
+.appearance-save { display: flex; gap: 10px; margin-top: 20px; }
+.appearance-save > input { min-width: 0; flex: 1; }
+.appearance-saved { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.appearance-saved > div { display: flex; gap: 4px; }
+.analytics-detail { min-width: 0; }
+@media (max-width: 600px) {
+  .appearance-grid { grid-template-columns: minmax(0, 1fr); }
+  .appearance-save { flex-wrap: wrap; }
+}
+
+.app .brandicon { box-shadow: 0 4px 14px #0002; }
+.app .p5-track span { background: var(--accent); }
+.app .p5c-tip { background: var(--solid-surface); color: var(--text); border-color: var(--border); }

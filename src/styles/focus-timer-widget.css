@@ -1,0 +1,125 @@
+.focus-widget {
+  --widget-surface: #151d2d;
+  --widget-text: #f2f5fb;
+  --widget-muted: #abb9ce;
+  --widget-edge: #3b4a61;
+  box-sizing: border-box;
+  font: 600 12px/1.35 system-ui, sans-serif;
+  background-color: var(--widget-surface);
+  color: var(--widget-text);
+  color-scheme: dark;
+}
+
+.focus-widget[data-theme="light"] {
+  --widget-surface: #f8faff;
+  --widget-text: #182334;
+  --widget-muted: #546780;
+  --widget-edge: #a4b3ca;
+  color-scheme: light;
+}
+
+.focus-widget.study-floating-timer {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 100;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  padding: 9px;
+  border: 1px solid var(--widget-edge);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px #0005, inset 0 2px var(--widget-accent);
+}
+
+.focus-widget-row,
+.focus-widget-notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.focus-widget button {
+  box-sizing: border-box;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.focus-widget button:focus-visible {
+  outline: 2px solid var(--widget-accent);
+  outline-offset: 2px;
+}
+
+.focus-widget button:disabled { opacity: .6; cursor: default; }
+
+.focus-widget .focus-widget-grip {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--widget-muted);
+  cursor: grab;
+  touch-action: none;
+}
+.focus-widget .focus-widget-grip:active { cursor: grabbing; }
+.focus-widget .focus-widget-grip:hover { color: var(--widget-text); }
+
+.focus-widget-readout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 5px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  min-width: 0;
+}
+
+.focus-widget-readout > svg { color: var(--widget-accent); flex-shrink: 0; }
+.focus-widget-readout strong,
+.focus-widget-state { display: block; }
+.focus-widget-state { color: var(--widget-muted); font-size: 11px; }
+.focus-widget-readout strong,
+.focus-widget-mini-clock { font-variant-numeric: tabular-nums; line-height: 1.05; }
+.focus-widget-readout strong { font-size: 19px; margin-top: 2px; }
+
+.focus-widget .focus-widget-action,
+.focus-widget .focus-widget-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 9px;
+  border: 1px solid var(--widget-edge);
+  background: var(--widget-surface);
+}
+
+.focus-widget .focus-widget-action {
+  background: var(--widget-accent);
+  color: var(--widget-on-accent);
+  border-color: transparent;
+}
+
+.focus-widget .focus-widget-icon:hover { border-color: var(--widget-accent); }
+.focus-widget .focus-widget-action:hover:not(:disabled) { filter: brightness(.92); }
+.focus-widget-message { display: block; max-width: 240px; margin-top: 6px; color: var(--widget-muted); }
+
+body:has(> .focus-widget-mini) { margin: 0; }
+.focus-widget-mini {
+  min-height: 100dvh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 9px;
+  padding: 12px;
+  text-align: center;
+  border-top: 3px solid var(--widget-accent);
+}
+.focus-widget-mini-clock { font-size: clamp(26px, 13vw, 48px); }

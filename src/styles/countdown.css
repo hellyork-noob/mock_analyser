@@ -1,0 +1,351 @@
+/* Advance Analyzer v2.1 Phase 4: Countdown (additive; retains all prior CSS) */
+.v21-countdown {
+  display: grid;
+  gap: 15px;
+  min-width: 0;
+}
+.v21-countdown-top {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 14px;
+  align-items: stretch;
+}
+.v21-countdown-top > .panel {
+  margin: 0;
+  min-width: 0;
+  padding: 20px;
+}
+.v21-countdown-eyebrow {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  margin-bottom: 13px;
+}
+.v21-next-exam {
+  border-left: 4px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 220px;
+}
+.v21-next-exam h2 {
+  font-size: clamp(19px, 2.2vw, 28px);
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+.v21-countdown-date {
+  color: var(--muted);
+  font-size: 12px;
+}
+.v21-countdown-days {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 15px;
+}
+.v21-countdown-days strong {
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.v21-countdown-days span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.v21-countdown-alert {
+  font-size: 11px;
+  margin-top: 8px;
+  color: #fb7185;
+}
+
+.v21-featured-application {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+}
+.v21-application-link,
+.v21-application-done {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.v21-application-link { color: var(--accent); text-underline-offset: 3px; }
+.v21-countdown-card-footer .v21-application-link {
+  min-height: 32px;
+  padding-inline: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface2);
+  text-decoration: none;
+}
+.v21-countdown-card-footer .v21-application-link:hover { border-color: var(--accent); }
+.v21-application-done { color: var(--success); }
+.v21-countdown .v21-countdown-card-tools { flex-shrink: 0; }
+.v21-application-check input,
+.v21-countdown-add .v21-application-edit input {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.v21-countdown-add .v21-application-edit {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.v21-countdown-add {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+}
+.v21-countdown-add .v21-countdown-eyebrow {
+  margin-bottom: 0;
+}
+.v21-countdown-add label {
+  display: grid;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.v21-countdown-add input {
+  width: 100%;
+  padding: 9px 11px;
+  font-size: 12px;
+}
+.v21-countdown-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+.v21-countdown-actions button {
+  padding: 9px 13px;
+}
+.v21-countdown-add .error {
+  margin: 0;
+  font-size: 12px;
+}
+.v21-countdown-list-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.v21-countdown-list-head strong {
+  font-size: 13px;
+}
+.v21-countdown-list-head label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.v21-countdown-list-head input {
+  accent-color: var(--accent);
+}
+.v21-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 12px;
+}
+.v21-countdown-card {
+  margin: 0;
+  min-width: 0;
+  border-left: 4px solid var(--accent);
+  padding: 15px !important;
+}
+.v21-countdown-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 8px;
+}
+.v21-countdown-card-title strong {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.v21-countdown-card-title span {
+  font-size: 10px;
+  white-space: nowrap;
+  color: var(--muted);
+}
+.v21-countdown-card-days {
+  font-size: 30px;
+  font-weight: 800;
+  margin: 12px 0 8px;
+  font-variant-numeric: tabular-nums;
+}
+.v21-countdown-card-days small {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.v21-countdown-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.v21-countdown-card-bottom time {
+  font-size: 11px;
+  color: var(--muted);
+}
+.v21-countdown-card-bottom > div {
+  display: flex;
+  gap: 7px;
+}
+.v21-countdown-card-bottom button {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 6px 9px;
+  font-size: 11px;
+}
+.v21-urgency-urgent {
+  border-left-color: #ef4444;
+}
+.v21-urgency-near {
+  border-left-color: #f97316;
+}
+.v21-urgency-soon {
+  border-left-color: #0ea5e9;
+}
+.v21-urgency-far {
+  border-left-color: #6366f1;
+}
+.v21-urgency-past {
+  border-left-color: #64748b;
+}
+.v21-countdown-empty {
+  color: var(--muted);
+  font-size: 12px;
+  padding: 10px 2px;
+}
+@media (max-width: 850px) {
+  .v21-countdown-top {
+    grid-template-columns: 1fr;
+  }
+  .v21-next-exam {
+    min-height: 150px;
+  }
+}
+@media (max-width: 650px) {
+  .v21-countdown-top > .panel {
+    padding: 15px;
+  }
+  .v21-countdown-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* v2.1 Phase 4 refinement — compact countdown and clear KPI values */
+@media (min-width: 851px) {
+  .v21-countdown-top > .panel {
+    padding: 13px 19px;
+  }
+  .v21-next-exam {
+    min-height: 0;
+  }
+  .v21-countdown-eyebrow {
+    margin-bottom: 7px;
+  }
+  .v21-next-exam h2 {
+    font-size: clamp(19px, 2vw, 25px);
+    margin-bottom: 4px;
+  }
+  .v21-countdown-days {
+    margin-top: 8px;
+    gap: 9px;
+  }
+  .v21-countdown-days strong {
+    font-size: clamp(33px, 3.5vw, 43px);
+  }
+  .v21-countdown-alert {
+    margin-top: 4px;
+  }
+  .v21-countdown-add {
+    gap: 6px;
+  }
+  .v21-countdown-add label {
+    gap: 3px;
+  }
+  .v21-countdown-add input {
+    padding: 6px 10px;
+    min-height: 34px;
+  }
+  .v21-countdown-actions {
+    margin-top: 0;
+  }
+  .v21-countdown-actions button {
+    padding: 7px 12px;
+  }
+}
+.v21-metric-fraction {
+  font-size: clamp(22px, 2.4vw, 30px);
+  white-space: nowrap;
+  letter-spacing: -0.7px;
+}
+.v21-metric-fraction span {
+  font-size: 0.57em;
+  color: var(--muted);
+  font-weight: 650;
+  letter-spacing: 0;
+}
+@media (max-width: 600px) {
+  .v21-metric-fraction {
+    font-size: clamp(19px, 5vw, 26px);
+  }
+}
+
+/* v2.1 stability: render-failure recovery and keyboard accessibility */
+.aa-recovery {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #090e1b;
+  color: #eaf0ff;
+  font-family: system-ui, sans-serif;
+}
+.aa-recovery-card {
+  width: min(480px, 100%);
+  padding: 28px;
+  background: #111a2d;
+  border: 1px solid #263149;
+  border-radius: 16px;
+}
+.aa-recovery-card p {
+  color: #a5b4cc;
+  line-height: 1.6;
+}
+.aa-recovery-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.aa-recovery-actions button {
+  background: #8272f5;
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 14px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .app *,
+  .app *::before,
+  .app *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+

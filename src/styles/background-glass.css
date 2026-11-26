@@ -1,0 +1,136 @@
+.app[data-glass-performance] {
+  --glass-card-base: #292d38;
+  --glass-control-base: #39404f;
+  --glass-sidebar-base: #1b1e25;
+  --surface: color-mix(in srgb, var(--glass-card-base) var(--glass-opacity), transparent);
+  --surface2: color-mix(in srgb, var(--glass-control-base) var(--glass-opacity), transparent);
+  --side: color-mix(in srgb, var(--glass-sidebar-base) var(--glass-opacity), transparent);
+  --glass-underlay: color-mix(in srgb, var(--glass-color-middle) var(--glass-glow-middle), var(--bg));
+  /* Composite sticky surfaces so scrolled text cannot show through them. */
+  --glass-sticky-surface: linear-gradient(var(--surface), var(--surface)), var(--glass-underlay);
+  --workspace-gradient: linear-gradient(var(--glass-angle),
+    color-mix(in srgb, var(--glass-color-start) var(--glass-glow-start), var(--bg)),
+    color-mix(in srgb, var(--glass-color-middle) calc(var(--glass-glow-middle) * .85), var(--bg)),
+    color-mix(in srgb, var(--glass-color-end) var(--glass-glow-end), var(--bg)));
+  --glass-reflection: linear-gradient(140deg, rgb(255 255 255 / calc(.26 * var(--glass-shine))), transparent 58%);
+  --glass-elevation: 0 8px 24px rgb(0 0 0 / calc(.34 * var(--glass-shadow-depth))),
+    inset 0 1px 0 rgb(255 255 255 / calc(.8 * var(--glass-border)));
+  --sidebar-sheen: linear-gradient(150deg,
+    rgb(255 255 255 / calc(.55 * var(--glass-shine))),
+    transparent 38%,
+    rgb(255 255 255 / calc(.14 * var(--glass-shine))));
+  --sidebar-rim: rgb(255 255 255 / calc(.85 * var(--glass-border)));
+  --sidebar-shade: rgb(0 0 0 / calc(.48 * var(--glass-shadow-depth)));
+  background: var(--workspace-gradient);
+}
+
+.app.light[data-glass-performance] {
+  --glass-card-base: #fff;
+  --glass-control-base: #e4e9f2;
+  --glass-sidebar-base: #fafbfe;
+}
+
+.app[data-glass-performance] aside.sidebar,
+.glass-preview-sidebar {
+  background-color: var(--side);
+  background-image: var(--sidebar-sheen);
+  box-shadow: 8px 0 24px var(--sidebar-shade), inset -1px 0 var(--sidebar-rim), inset 0 1px var(--sidebar-rim);
+}
+
+.app[data-glass-performance] .sidebar :is(.sidebar-theme, .sidebar-exam, select) {
+  background-color: var(--side);
+}
+
+.app[data-glass-performance] .sidebar :is(.sidebar-theme, select, nav button:hover) {
+  background-image: var(--glass-reflection);
+  box-shadow: inset 0 1px var(--sidebar-rim);
+}
+
+.app[data-glass-performance] .sidebar nav button.active {
+  background-image: var(--glass-reflection);
+  box-shadow: inset 3px 0 var(--accent), inset 0 1px var(--sidebar-rim);
+}
+
+
+.app[data-glass-performance] :is(.panel, .metric, .welcome, .v22-panel, .v22-subject-card, .v22-chart-card, .aa-pl-card, .glass-preview-card) {
+  box-shadow: var(--glass-elevation);
+}
+
+.app[data-glass-performance] :is(.panel, .metric, .v22-panel, .v22-subject-card, .v22-chart-card, .aa-pl-card, .glass-preview-card):not([data-countdown-band]) {
+  background-image: var(--glass-reflection);
+}
+
+.app[data-glass-performance] :is(.aa-md-overlay, .p4-backdrop) {
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.app[data-glass-performance] .aa-md-overlay {
+  background: color-mix(in srgb, var(--glass-underlay) 90%, transparent);
+}
+
+.app[data-glass-performance] .aa-md-modal {
+  background: var(--glass-reflection), var(--surface);
+}
+
+.app[data-glass-performance] :is(.aa-md-summary > div, .aa-md-subject) {
+  box-shadow: var(--glass-elevation);
+}
+
+@media (min-width: 651px) {
+  .app[data-glass-performance] aside.sidebar { backdrop-filter: blur(var(--glass-blur)); }
+}
+
+@media (max-width: 650px) {
+  .app[data-glass-performance] aside.sidebar {
+    box-shadow: 0 8px 24px var(--sidebar-shade), inset 0 -1px var(--sidebar-rim), inset 0 1px var(--sidebar-rim);
+  }
+  .app[data-glass-performance="false"] aside.sidebar { backdrop-filter: blur(var(--glass-blur)); }
+}
+
+.app[data-glass-performance] .glass-preview-sidebar,
+.app[data-glass-performance="false"] .glass-preview-card {
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.glass-settings {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.glass-settings h3 { margin: 0 0 4px; }
+.glass-settings p { margin: 0; color: var(--muted); }
+.glass-pickers, .glass-performance { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.glass-pickers { align-items: start; }
+.glass-pickers label { display: grid; gap: 6px; font-size: 12px; min-width: 0; }
+.glass-color-editor { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 6px; flex: 1 1 200px; min-width: 0; }
+.glass-color-editor input[type="text"] { width: 100%; min-width: 0; padding-inline: 8px; }
+.glass-color-editor input[type="color"] { width: 38px; height: 36px; padding: 3px; cursor: pointer; }
+.glass-color-editor small { grid-column: 1 / -1; color: var(--muted); }
+.glass-preview { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 10px; padding: clamp(14px, 4vw, 32px); border: 1px solid var(--border); border-radius: 16px; background: var(--workspace-gradient); }
+.glass-preview-card, .glass-preview-sidebar { display: grid; place-items: center; min-height: 62px; padding: 8px; border: 1px solid var(--border); border-radius: 12px; }
+.glass-preview-card { background: var(--surface); }
+.glass-preview-sidebar { font-weight: 650; }
+.glass-sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px 20px; }
+.glass-slider { display: grid; gap: 8px; font-size: 12px; }
+.glass-slider span { display: flex; justify-content: space-between; gap: 8px; }
+.glass-slider output { color: var(--muted); font-variant-numeric: tabular-nums; }
+.app .glass-slider input { width: 100%; padding: 0; accent-color: var(--accent); }
+.glass-advanced { padding: 12px; border: 1px solid var(--border); border-radius: 12px; }
+.glass-advanced summary { cursor: pointer; font-weight: 600; }
+.glass-advanced .glass-sliders, .glass-performance { margin-top: 14px; }
+.glass-performance + small { display: block; margin-top: 6px; }
+
+@media (prefers-reduced-transparency: reduce) {
+  .app[data-glass-performance] {
+    --surface: var(--glass-card-base);
+    --surface2: var(--glass-control-base);
+    --side: var(--glass-sidebar-base);
+    --glass-sticky-surface: var(--glass-card-base);
+  }
+  .app[data-glass-performance] :is(aside.sidebar, .aa-md-overlay, .p4-backdrop),
+  .app[data-glass-performance] .glass-preview-sidebar,
+  .app[data-glass-performance="false"] .glass-preview-card { backdrop-filter: none; }
+  .app[data-glass-performance] .aa-md-overlay { background: var(--glass-underlay); }
+}
