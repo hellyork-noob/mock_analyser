@@ -11,8 +11,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/icon-192.png', 'icons/icon-512.png'],
       manifest: {
-        name: 'Advance Analyzer v2.1',
-        short_name: 'Analyzer v2.1',
+        name: 'Advance Analyzer',
+        short_name: 'Analyzer',
         description: 'Offline-first mock exam analytics',
         theme_color: '#0b1020',
         background_color: '#0b1020',
